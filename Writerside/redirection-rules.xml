@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rules SYSTEM "https://resources.jetbrains.com/writerside/1.0/redirection-rules.dtd">
+<rules>
+    <!-- format is as follows
+    <rule id="<unique id>">
+        <accepts>page.html</accepts>
+    </rule>
+    -->
+    <rule id="18c90eee">
+        <description>Created after removal of "Roadmap Examples" from the-second-brain</description>
+        <accepts>roadmap.html</accepts>
+    </rule>
+    <rule id="11529db5">
+        <description>Created after removal of "Mind Map Examples" from the-second-brain</description>
+        <accepts>mind-map.html</accepts>
+    </rule>
+</rules>

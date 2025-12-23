@@ -14,4 +14,8 @@
         <description>Created after removal of "Mind Map Examples" from the-second-brain</description>
         <accepts>mind-map.html</accepts>
     </rule>
+    <rule id="e06e42f">
+        <description>Created after removal of "Authentication" from the-second-brain</description>
+        <accepts>Authentication.html</accepts>
+    </rule>
 </rules>

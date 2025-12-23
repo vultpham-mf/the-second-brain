@@ -8,6 +8,9 @@
 
     <toc-element topic="starter-topic.md"/>
     <toc-element toc-title="Knowledge Cheater">
-        <toc-element toc-title=".NET"/>
+        <toc-element toc-title="Draft">
+            <toc-element topic="Authentication.md"/>
+            <toc-element topic="Authorization.md"/>
+        </toc-element>
     </toc-element>
 </instance-profile>

@@ -1,4 +1,5 @@
 # Authentication
+<primary-label ref="draft"/>
 
 <note>
     <p>Authentication basically answers the question: Who are you?</p>

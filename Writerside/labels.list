@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE labels SYSTEM "https://resources.jetbrains.com/writerside/1.0/labels-list.dtd">
+<labels xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/labels.xsd">
+
+    <primary-label id="guide" short-name="Guide" name="Guide" color="strawberry">Guide</primary-label>
+    <primary-label id="draft" short-name="Draft" name="Draft" color="black">Draft</primary-label>
+
+    <secondary-label id="dotnet" name=".NET" color="purple">.NET</secondary-label>
+    <secondary-label id="kafka" name="Kafka" color="black">Kafka</secondary-label>
+</labels>

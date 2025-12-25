@@ -1,17 +1,21 @@
-# About me 🧏🏼‍♂️
+# About me 
 
-<!--Writerside adds this topic when you create a new documentation project.
-You can use it as a sandbox to play with Writerside features, and remove it from the TOC when you don't need it anymore.
-If you want to re-add it for your experiments, click + to create a new topic, choose Topic from Template, and select the 
-"Starter" template.-->
+## This is how I feel starting a new blog
+<img src="big-brain-as-seat.png" alt="The Second Brain" align="center" width="430"/>
 
 ## Wassup! I'm Vũ
-* 🐈‍⬛ I like cats 
-* 🪴 I also appreciate plants, Monstera is my most favorite
-* 🪾 I have some experience in growing plants and managing them 
+
+<note>
+The purpose of this blog is to document my learning journey 
+so that I can refer back to it later. 
+That's why I call it <code>The Second Brain</code>.
+</note>
+
+* 🪴 I appreciate plants
+* 🪾 I also have some experience in growing plants and managing them 
 * 💽 I vibe with old-school music like jazz-rap, hip-hop, and metal rock ([check out my recent favorite track](https://open.spotify.com/track/4AE7Lj39VnSZNOmGH2iZaq?si=4da5861969504270)) 
 * Contact me at: vultpham-mf@gmail.com
 * Repo of this project: [](https://github.com/vultpham-mf/the-second-brain)
 
 |-----------------------------------------------------|-------------------------------------------|
-| ![My Monstera](../images/about-me/my-monstera.jpeg) | ![My Cat](../images/about-me/my-cat.jpeg) |
+| ![My Monstera](my-monstera.jpeg) | ![My Cat](my-cat.jpeg) |

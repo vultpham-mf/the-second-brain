@@ -7,7 +7,11 @@
     <build-profile instance="tsb">
         <variables>
             <noindex-content>true</noindex-content>
+            <header-logo>the-second-brain-logo.png</header-logo>
         </variables>
+        <footer>
+            <social type="github" href="https://github.com/vultpham-mf"/>
+        </footer>
     </build-profile>
 
 </buildprofiles>

@@ -3,10 +3,13 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
 <instance-profile id="tsb"
-                 name="the-second-brain"
+                 name="The Second Brain"
                  start-page="starter-topic.md">
 
     <toc-element topic="starter-topic.md"/>
+    <toc-element toc-title="Blogs">
+        <toc-element topic="Set-up-Kafka-with-Dependency-Injection-in-NET.md"/>
+    </toc-element>
     <toc-element toc-title="Knowledge Cheater">
         <toc-element toc-title="Draft">
             <toc-element topic="Authentication.md"/>

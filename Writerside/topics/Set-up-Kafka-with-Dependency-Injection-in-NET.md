@@ -5,6 +5,11 @@
 
 <img src="kafka-brainless-meme.jpg" alt="Wow, my project must use Kafka and Microservices"/>
 
+## Overview
+
+- This guide will show you how to set up Kafka with Dependency Injection in .NET.
+- It mostly focuses on Dependency Injection with ASP.NET Core.
+
 ## Install Kafka
 
 - Package name: <code>Confluent.Kafka</code>

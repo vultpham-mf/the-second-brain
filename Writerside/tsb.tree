@@ -7,8 +7,9 @@
                  start-page="starter-topic.md">
 
     <toc-element topic="starter-topic.md"/>
-    <toc-element toc-title="Blogs">
+    <toc-element toc-title="Blog">
         <toc-element topic="Set-up-Kafka-with-Dependency-Injection-in-NET.md"/>
+        <toc-element topic="MVC-youre-doing-it-wrong.md"/>
     </toc-element>
     <toc-element toc-title="Knowledge Cheater">
         <toc-element toc-title="Draft">

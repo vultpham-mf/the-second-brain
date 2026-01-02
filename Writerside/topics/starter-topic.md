@@ -1,6 +1,6 @@
 # About me 
 
-## This is how I feel starting a new blog
+## This is how I feel starting a blog
 <img src="big-brain-as-seat.png" alt="The Second Brain" align="center" width="430"/>
 
 ## Wassup! I'm Vũ

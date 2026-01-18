@@ -3,11 +3,13 @@
 <buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-    <variables></variables>
     <build-profile instance="tsb">
         <variables>
             <header-logo>the-second-brain-logo.png</header-logo>
             <noindex-content>true</noindex-content>
+            <link-color>emerald</link-color>
+            <primary-color>aqua</primary-color>
+            <custom-favicons>the-second-brain-logo.png</custom-favicons>
         </variables>
         <footer>
             <social type="github" href="https://github.com/vultpham-mf"/>

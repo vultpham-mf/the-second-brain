@@ -1,5 +1,8 @@
 # How Kafka Determines Which Partition to Send the Message to?
-<primary-label ref="research"/>
+
+[//]: # (<primary-label ref="research"/>)
+
+<primary-label ref="draft"/>
 <secondary-label ref="kafka"/>
 <secondary-label ref="dotnet"/>
 

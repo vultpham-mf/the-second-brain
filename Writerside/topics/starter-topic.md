@@ -14,7 +14,7 @@ That's why I call it <code>The Second Brain</code>.
 * I'm Vũ
 * 🪴 I appreciate plants
 * 🪾 I also have some experience in growing plants and managing them 
-* 💽 I vibe with old-school music like jazz-rap, hip-hop, and metal rock ([check out my recent favorite track](https://open.spotify.com/track/4AE7Lj39VnSZNOmGH2iZaq?si=4da5861969504270)) 
+* 💽 I vibe with old-school music like jazz-rap, hip-hop, and metal rock ([check out my recent favorite track](https://open.spotify.com/track/5cjPccCshzZz7lJCNyKUbD?si=847a518a40904748)) 
 * Contact me at: vultpham-mf@gmail.com
 * Repo of this project: [](https://github.com/vultpham-mf/the-second-brain)
 

@@ -50,12 +50,12 @@ Recognizing these symptoms is the first step toward understanding why coupling a
 
 ## What Are Coupling and Cohesion?
 Before you can improve your code, you have to know what you’re aiming for. Coupling and cohesion are the two most fundamental qualities of software architecture.
-**They describe how code components relate to each other and how well each part does its specific job**. Let’s define them and see why they matter so much.
+**Basically, they describe the relationships between each module or component in the system.** Let’s define them and see why they matter so much.
 
 ### Coupling
-To understand coupling, let’s use the example of replacing the battery in different iPhone models.
+To understand coupling, let’s use the example of **replacing the battery in different iPhone models**.
 
-Consider three Apple devices: iPhone 3, iPhone 14, and iPhone 17 Pro.
+Consider three Apple devices: **iPhone 3**, **iPhone 14**, and **iPhone 17 Pro**.
 The iPhone 3 is the easiest when it comes to battery replacement—you can simply
 open the back and swap out the battery with almost no effort,
 and without worrying about damaging anything else. For the iPhone 14,

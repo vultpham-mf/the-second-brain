@@ -10,6 +10,7 @@
             <link-color>frozen</link-color>
             <primary-color>aqua</primary-color>
             <custom-favicons>the-second-brain-logo.png</custom-favicons>
+            <custom-css>custom.css</custom-css>
         </variables>
         <footer>
             <social type="github" href="https://github.com/vultpham-mf"/>

@@ -3,11 +3,11 @@
 <primary-label ref="opinion"/>
 
 ## Preface
-When we talk about writing good software or software design, buzzwords like `SOLID`, `DRY`, and `design patterns` often dominate the conversation. 
+When we talk about writing **good software or software design**, buzzwords like **SOLID**, **DRY**, and **design patterns** often dominate the conversation. 
 There’s endless debate about the latest architecture trend or which principle you should follow.
-But beneath all the acronyms and guidelines, there are two ideas that almost never get enough attention: `coupling` and `cohesion`. 
-Ironically, these are actually the *foundation* of all those other principles—almost every famous 
-guideline in software design is just a different perspective on how to achieve better `coupling` and `cohesion`.
+But beneath all the acronyms and guidelines, there are two ideas that almost never get enough attention: **coupling and cohesion**. 
+Ironically, these are actually the **foundation** of all those other principles—almost every famous 
+guideline in software design is just a different perspective on how to achieve better coupling and cohesion.
 
 This post aims to give coupling and cohesion the spotlight they deserve. 
 If you truly understand these two concepts, you no longer need SOLID, DRY, KISS... Let’s dig into why.
@@ -19,18 +19,34 @@ If you truly understand these two concepts, you no longer need SOLID, DRY, KISS.
 ~~It’s 2026, and not mentioning AI feels illegal.~~
 
 When using AI-assisted coding tools, we expect outputs that are predictable and dependable. 
-To achieve this, developers are moving away from random, ad-hoc "vibe coding" and toward structured context workflows that give the AI clear, reproducible instructions.
+To achieve this, developers are moving away from random, ad-hoc **vibe coding** and toward structured context workflows that give the AI clear, reproducible instructions.
 But how can you be confident your AI prompts are actually producing good results?
-The answer is always tied to fundamentals: strong software design—especially in terms of coupling and cohesion—matters just as much with AI as without.
+The answer is always tied to fundamentals: strong software design—especially in terms of **coupling and cohesion**—matters just as much with AI as without.
 
-## Why Software Design matters? (The three symptoms of complexity)
-// TODO fill content
+## Why Software Design Matters: The Three Symptoms of Complexity
 
-**Change amplification:** The first symptom of complexity is that a seemingly simple change requires code modifications in many different places.
+Before we get into the details of coupling and cohesion, it’s worth pausing to consider: 
+**Why should we care about software design at all?** The structure and organization of code plays 
+a big part in how manageable, flexible, and enjoyable a codebase is to work with. 
+Good design helps teams move faster and with fewer mistakes, while poor design slows everyone down
+and complicates even simple changes.
 
-**Cognitive load:** The second symptom of complexity is cognitive load, which refers to how much a developer needs to know in order to complete a task. A higher cognitive load means that developers have to spend more time learning the required information, and there is a greater risk of bugs because they have missed something important
+Bad design isn’t always about obvious bugs or failures—instead, 
+it shows up as persistent pain points that make working with the code harder than it needs to be,
+no matter what language or framework you’re using:
 
-**Unknown unknowns:** The third symptom of complexity is that it is not obvious which pieces of code must be modified to complete a task, or what information a developer must have to carry out the task successfully
+- **Change amplification:** When a simple change requires updates in many different places, 
+indicating that everything is entangled.
+
+- **Cognitive load:** The second symptom of complexity is cognitive load, 
+which refers to how much a developer needs to know in order to complete a task.
+A higher cognitive load means that developers have to spend more time learning the 
+required information, and there is a greater risk of bugs because they have missed something important.
+
+- **Unknown unknowns:** When it’s unclear what needs to change, or even what questions to ask,
+because the relevant code and information are hard to discover.
+
+Recognizing these symptoms is the first step toward understanding why coupling and cohesion matter so much. These two qualities are at the root of most design pain—and the key to avoiding it.
 
 ## What Are Coupling and Cohesion?
 Before you can improve your code, you have to know what you’re aiming for. Coupling and cohesion are the two most fundamental qualities of software architecture.
@@ -39,19 +55,17 @@ Before you can improve your code, you have to know what you’re aiming for. Cou
 ### Coupling
 To understand coupling, let’s use the example of replacing the battery in different iPhone models.
 
-// TODO fix the image scale
-
-<img src="ip-battery-replacement.png" alt="iPhone Battery Replacement"/>
-
-Consider three Apple devices: iPhone 3, iPhone 14, and iPhone 17 Pro. 
-The iPhone 3 is the easiest when it comes to battery replacement—you can simply 
-open the back and swap out the battery with almost no effort, 
+Consider three Apple devices: iPhone 3, iPhone 14, and iPhone 17 Pro.
+The iPhone 3 is the easiest when it comes to battery replacement—you can simply
+open the back and swap out the battery with almost no effort,
 and without worrying about damaging anything else. For the iPhone 14,
-it’s a bit more complicated: you have to carefully disconnect other 
-components before you can safely access and remove the battery. 
-Finally, with the iPhone 17 Pro, replacing the battery is the most difficult. 
+it’s a bit more complicated: you have to carefully disconnect other
+components before you can safely access and remove the battery.
+Finally, with the iPhone 17 Pro, replacing the battery is the most difficult.
 You need to start by removing the expensive display and then carefully separate additional layers,
 increasing the risk of damaging the screen or other internal sensors along the way.
+
+<img src="ip-battery-replacement.png" width="750" alt="iPhone Battery Replacement"/>
 
 From an engineering perspective, the relationship between the iPhone and its battery during
 replacement demonstrates different degrees of `coupling`. Coupling describes how much
@@ -67,12 +81,9 @@ In software engineering, **coupling** formally refers to the degree of interdepe
 [//]: # (//TODO fix the format)
 // TODO fix the format
 
-**Official definition:**  
-*Coupling is the degree to which one software module relies on or knows about the internal details of another module.*
-
 // TODO fix image scale
 
-<img src="coupling.png" alt="Coupling"/>
+<img src="coupling.png" width="750" alt="Coupling"/>
 
 #### Example: Tight vs. Loose Coupling in Code
 
@@ -134,7 +145,7 @@ Reducing coupling improves modularity and adaptability of your codebase.
 
 Cohesion refers to how closely the operations inside a single module (like a class or function) relate to each other. High cohesion means a class does one well-defined thing. Low cohesion means it handles unrelated tasks, making code harder to maintain and understand.
 
-<img src="cohesion.png" alt="Cohesion"/>
+<img src="cohesion.png" width="750" alt="Cohesion"/>
 
 
 <tabs>
@@ -182,6 +193,12 @@ Here, each class takes responsibility for one thing. `SalaryCalculator` focuses 
 - *High Cohesion* = a class/function does one well-defined thing (clear, robust, maintainable)
 
 Striving for high cohesion leads to code and products that are easier to reuse, refactor, and reason about.
+
+<note>
+// TODO fill content
+
+Coupling and Cohesion isn't just about structure, it is everywhere, represent the relationship of modules, component, class, or even lines of code..
+</note>
 
 ## Common Violations
 

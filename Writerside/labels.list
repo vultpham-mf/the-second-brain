@@ -5,6 +5,7 @@
 
     <primary-label id="guide" short-name="Guide" name="Guide" color="strawberry">Guide</primary-label>
     <primary-label id="research" short-name="Research" name="Research" color="marine">Guide</primary-label>
+    <primary-label id="opinion" short-name="Opinion" name="Opinion" color="green">Opinion</primary-label>
     <primary-label id="draft" short-name="Draft" name="Draft" color="black">Draft</primary-label>
 
     <secondary-label id="dotnet" name=".NET" color="purple">.NET</secondary-label>

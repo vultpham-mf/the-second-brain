@@ -1,6 +1,6 @@
 ﻿# It’s Just Coupling and Cohesion
 
-<primary-label ref="opinion"/>
+<primary-label ref="opinion"></primary-label>
 
 ## Preface
 When we talk about writing **good software or software design**, buzzwords like **SOLID**, **DRY**, and **design patterns** often dominate the conversation. 
@@ -45,35 +45,43 @@ required information, and there is a greater risk of bugs because they have miss
 
 - **Unknown unknowns:** When it’s unclear what needs to change, or even what questions to ask,
 because the relevant code and information are hard to discover.
-
+    
 Recognizing these symptoms is the first step toward understanding why coupling and cohesion matter so much. These two qualities are at the root of most design pain—and the key to avoiding it.
 
 ## What Are Coupling and Cohesion?
-Before you can improve your code, you have to know what you’re aiming for. Coupling and cohesion are the two most fundamental qualities of software architecture.
-**Basically, they describe the relationships between each module or component in the system.** Let’s define them and see why they matter so much.
+**Coupling and cohesion** are two foundational concepts in software design that shape how your codebase 
+evolves, scales, and survives over time. While they’re often mentioned in passing, 
+many developers struggle to define them clearly, or to recognize their impact on real-world decisions.
+
+**Cohesion** describes how well the elements within a module or component belong together—how focused 
+and self-contained it is. **Coupling**, on the other hand, measures how much different modules or 
+components depend on each other—how entangled or isolated your components are.
+
+Why does this matter? Because the level of coupling and cohesion in your codebase determines how painful 
+or painless it is to maintain, change, and understand. Mastering these concepts leads to cleaner,
+more reliable, and more robust software—regardless of what language, framework, or architecture you use.
+
+Let’s break down what each term really means, and why you should care.
 
 ### Coupling
 To understand coupling, let’s use the example of **replacing the battery in different iPhone models**.
 
-Consider three Apple devices: **iPhone 3**, **iPhone 14**, and **iPhone 17 Pro**.
+Consider two Apple devices: **iPhone 3** and **iPhone 17 Pro**.
 The iPhone 3 is the easiest when it comes to battery replacement—you can simply
 open the back and swap out the battery with almost no effort,
-and without worrying about damaging anything else. For the iPhone 14,
-it’s a bit more complicated: you have to carefully disconnect other
-components before you can safely access and remove the battery.
-Finally, with the iPhone 17 Pro, replacing the battery is the most difficult.
+and without worrying about damaging anything else. With the iPhone 17 Pro, replacing the battery is far more difficult.
 You need to start by removing the expensive display and then carefully separate additional layers,
 increasing the risk of damaging the screen or other internal sensors along the way.
 
-<img src="ip-battery-replacement.png" width="750" alt="iPhone Battery Replacement"/>
+<img src="ip-battery-replacement.png" width="700" alt="iPhone Battery Replacement"/>
 
 From an engineering perspective, the relationship between the iPhone and its battery during
-replacement demonstrates different degrees of `coupling`. Coupling describes how much
+replacement demonstrates different degrees of **coupling**. Coupling describes how much
 changing one component (the battery) affects others (the rest of the phone). 
 In the iPhone 3, battery replacement is easy, safe, and doesn’t impact other components
-—we call this “loose coupling,” which is ideal. In the iPhone 14 and especially the 17 Pro,
+—we call this **loose coupling**, which is ideal. In the 17 Pro,
 accessing the battery risks interfering with or breaking other parts, 
-like the screen or sensors—this is “tight coupling,” which is less desirable because 
+like the screen or sensors—this is **tight coupling**, which is lesss desirable because 
 a change to one part requires risky interaction with others.
 
 In software engineering, **coupling** formally refers to the degree of interdependence between software modules—a measure of how closely connected different components or classes are. Lower (looser) coupling is generally preferred, as it makes systems easier to understand, modify, and test.
@@ -204,9 +212,9 @@ Coupling and Cohesion isn't just about structure, it is everywhere, represent th
 
 ### The "Class and Interface" problem
 
-### The "MVC Starter" (A guide to "Clean Architecture")
+### The "MVC Starter" problem (A guide to "Clean Architecture")
 
-### The Constants file (A place to store constant)
+### The DRY problem
 
 ### The "Everything is a Service" problem
 

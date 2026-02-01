@@ -3,67 +3,75 @@
 <primary-label ref="opinion"></primary-label>
 
 ## Preface
-When we talk about writing **good software or software design**, buzzwords like **SOLID**, **DRY**, and **design patterns** often dominate the conversation. 
+
+When we talk about writing **good software or software design**, buzzwords like **SOLID**, **Clean Architecture**, **DRY**, **CQRS**, **design
+patterns**, and so on often dominate the conversation.
 There’s endless debate about the latest architecture trend or which principle you should follow.
-But beneath all the acronyms and guidelines, there are two ideas that almost never get enough attention: **coupling and cohesion**. 
-Ironically, these are actually the **foundation** of all those other principles—almost every famous 
+But beneath all the acronyms and guidelines, there are two ideas that almost never get enough attention: **coupling and
+cohesion**.
+Ironically, these are actually the **foundation** of all those other principles—almost every famous
 guideline in software design is just a different perspective on how to achieve better coupling and cohesion.
 
-This post aims to give coupling and cohesion the spotlight they deserve. 
+This post aims to give coupling and cohesion the spotlight they deserve.
 If you truly understand these two concepts, you no longer need SOLID, DRY, KISS... Let’s dig into why.
 
 ### Obligatory AI Reference to Stay Relevant
 
 <img src="first-they-came-for-the-artists-v0-zku9xsa0ob6a1.png" alt="Soon AI will take over programming"/>
 
-~~It’s 2026, and not mentioning AI feels illegal.~~
+**~~It’s 2026, and not mentioning AI feels illegal.~~**
 
-When using AI-assisted coding tools, we expect outputs that are predictable and dependable. 
-To achieve this, developers are moving away from random, ad-hoc **vibe coding** and toward structured context workflows that give the AI clear, reproducible instructions.
+When using AI-assisted coding tools, we expect outputs that are predictable and dependable.
+To achieve this, developers are moving away from random, ad-hoc **vibe coding** and toward structured context workflows
+that give the AI clear, reproducible instructions.
 But how can you be confident your AI prompts are actually producing good results?
-The answer is always tied to fundamentals: strong software design—especially in terms of **coupling and cohesion**—matters just as much with AI as without.
+The answer is always tied to fundamentals: strong software design—especially in terms of **coupling and cohesion**
+—matters just as much with AI as without.
 
 ## Why Software Design Matters: The Three Symptoms of Complexity
 
-Before we get into the details of coupling and cohesion, it’s worth pausing to consider: 
-**Why should we care about software design at all?** The structure and organization of code plays 
-a big part in how manageable, flexible, and enjoyable a codebase is to work with. 
+Before we get into the details of coupling and cohesion, it’s worth pausing to consider:
+**Why should we care about software design at all?** The structure and organization of code plays
+a big part in how manageable, flexible, and enjoyable a codebase is to work with.
 Good design helps teams move faster and with fewer mistakes, while poor design slows everyone down
 and complicates even simple changes.
 
-Bad design isn’t always about obvious bugs or failures—instead, 
+Bad design isn’t always about obvious bugs or failures—instead,
 it shows up as persistent pain points that make working with the code harder than it needs to be,
 no matter what language or framework you’re using:
 
-- **Change amplification:** When a simple change requires updates in many different places, 
-indicating that everything is entangled.
+- **Change amplification:** When a simple change requires updates in many different places,
+  indicating that everything is entangled.
 
-- **Cognitive load:** The second symptom of complexity is cognitive load, 
-which refers to how much a developer needs to know in order to complete a task.
-A higher cognitive load means that developers have to spend more time learning the 
-required information, and there is a greater risk of bugs because they have missed something important.
+- **Cognitive load:** The second symptom of complexity is cognitive load,
+  which refers to how much a developer needs to know in order to complete a task.
+  A higher cognitive load means that developers have to spend more time learning the
+  required information, and there is a greater risk of bugs because they have missed something important.
 
 - **Unknown unknowns:** When it’s unclear what needs to change, or even what questions to ask,
-because the relevant code and information are hard to discover.
-    
-Recognizing these symptoms is the first step toward understanding why coupling and cohesion matter so much. These two qualities are at the root of most design pain—and the key to avoiding it.
+  because the relevant code and information are hard to discover.
+
+Recognizing these symptoms is the first step toward understanding why coupling and cohesion matter so much. These two
+qualities are at the root of most design pain—and the key to avoiding it.
 
 ## What Are Coupling and Cohesion?
-**Coupling and cohesion** are two foundational concepts in software design that shape how your codebase 
-evolves, scales, and survives over time. While they’re often mentioned in passing, 
+
+**Coupling and cohesion** are two foundational concepts in software design that shape how your codebase
+evolves, scales, and survives over time. While they’re often mentioned in passing,
 many developers struggle to define them clearly, or to recognize their impact on real-world decisions.
 
-**Cohesion** describes how well the elements within a module or component belong together—how focused 
-and self-contained it is. **Coupling**, on the other hand, measures how much different modules or 
+**Cohesion** describes how well the elements within a module or component belong together—how focused
+and self-contained it is. **Coupling**, on the other hand, measures how much different modules or
 components depend on each other—how entangled or isolated your components are.
 
-Why does this matter? Because the level of coupling and cohesion in your codebase determines how painful 
+Why does this matter? Because the level of coupling and cohesion in your codebase determines how painful
 or painless it is to maintain, change, and understand. Mastering these concepts leads to cleaner,
 more reliable, and more robust software—regardless of what language, framework, or architecture you use.
 
 Let’s break down what each term really means, and why you should care.
 
 ### Coupling
+
 To understand coupling, let’s use the example of **replacing the battery in different iPhone models**.
 
 Consider two Apple devices: **iPhone 3** and **iPhone 17 Pro**.
@@ -76,137 +84,209 @@ increasing the risk of damaging the screen or other internal sensors along the w
 <img src="ip-battery-replacement.png" width="700" alt="iPhone Battery Replacement"/>
 
 From an engineering perspective, the relationship between the iPhone and its battery during
-replacement demonstrates different degrees of **coupling**. Coupling describes how much
-changing one component (the battery) affects others (the rest of the phone). 
-In the iPhone 3, battery replacement is easy, safe, and doesn’t impact other components
+replacement demonstrates different degrees of **coupling**. In this case, coupling describes how much
+changing one module (the battery) affects others (the rest of the phone).
+In the iPhone 3, battery replacement is easy, safe, and doesn’t impact other modules
 —we call this **loose coupling**, which is ideal. In the 17 Pro,
-accessing the battery risks interfering with or breaking other parts, 
-like the screen or sensors—this is **tight coupling**, which is lesss desirable because 
+accessing the battery risks interfering with or breaking other parts,
+like the screen or sensors—this is **tight coupling**, which is lesss desirable because
 a change to one part requires risky interaction with others.
 
-In software engineering, **coupling** formally refers to the degree of interdependence between software modules—a measure of how closely connected different components or classes are. Lower (looser) coupling is generally preferred, as it makes systems easier to understand, modify, and test.
+In software engineering, **coupling** formally refers to the degree of interdependence
+between software modules—a measure of how closely connected different modules or components are.
+**Lower (looser) coupling is generally preferred**, as it makes systems easier to understand, modify, and test.
 
-[//]: # (//TODO fix the format)
-// TODO fix the format
-
-// TODO fix image scale
-
-<img src="coupling.png" width="750" alt="Coupling"/>
+<img src="coupling.png" width="700" alt="Coupling"/>
 
 #### Example: Tight vs. Loose Coupling in Code
 
-Suppose we need a program that sends notifications to users.  
+Let’s see a practical example from API and web development.
 
-<tabs>
-    <tab title="Tightly coupled example">
-<code-block lang="python">
-class EmailService:
-    def send(self, message):
-        print(f"Sending email: {message}")
+Imagine you first build an API to display product information on a public product page. The frontend only needs the
+product's **name**, **image**, and **price**, so you create a simple DTO:
 
-class NotificationManager:
-    def __init__(self):
-        self.email_service = EmailService()  # Directly creates dependency
-
-    def notify(self, message):
-        self.email_service.send(message)
+<code-block lang="go">
+type ProductDTO struct {
+    Name  string  `json:"name"`
+    Image string  `json:"image"`
+    Price float64 `json:"price"`
+}
 </code-block>
-    </tab>
-</tabs>
 
-Here, `NotificationManager` directly depends on `EmailService`. If we want to replace emails with SMS or push notifications, we have to modify `NotificationManager`. This is **tight coupling**.
+Later, you receive a requirement to build an API for the **admin product page**. At that time, the admin also needs only
+the product's name, image, and price, so you reuse the existing `ProductDTO` to avoid duplication (following the DRY
+principle).
 
-<tabs>
-    <tab title="Loosely coupled example">
-<code-block lang="python">
-class Notifier:
-    def send(self, message):
-        pass
+However, the problem comes when one of those pages needs to change. Suppose the admin page now needs two new fields: *
+*supplier** and **inventory count**. You update `ProductDTO` to satisfy the admin requirement:
 
-class EmailService(Notifier):
-    def send(self, message):
-        print(f"Sending email: {message}")
-
-class NotificationManager:
-    def __init__(self, notifier: Notifier):
-        self.notifier = notifier  # Uses abstraction
-
-    def notify(self, message):
-        self.notifier.send(message)
+<code-block lang="go">
+type ProductDTO struct {
+    Name          string  `json:"name"`
+    Image         string  `json:"image"`
+    Price         float64 `json:"price"`
+    Supplier      string  `json:"supplier"`
+    InventoryCount int    `json:"inventory_count"`
+}
 </code-block>
-    </tab>
-</tabs>
 
-Now, `NotificationManager` can accept any notifier (Email, SMS, etc.) via constructor. This decoupling makes the code flexible and easier to maintain.
+Now, both the user-facing and admin APIs use the same DTO, but only the admin API actually needs the new fields. The
+user API becomes coupled to changes it doesn't care about, and you suddenly have to test both APIs whenever a new admin
+requirement appears. This is **tight coupling**—a change meant for one consumer risks unintended impact for another.
 
-**In summary:**  
-- *Tight Coupling* = components rely directly on each other (hard to change)
-- *Loose Coupling* = components interact via interfaces/abstractions (easy to change)
+A **better, loosely coupled** design would separate the DTOs **from the very beginning**, even when both APIs initially
+need the same fields. That is, instead of sharing a single `ProductDTO` between the user and admin APIs, define distinct
+response objects for each use case right away—even if they look identical at first:
 
-Reducing coupling improves modularity and adaptability of your codebase.
+<code-block lang="go">
+type UserProductResponse struct {
+    Name  string  `json:"name"`
+    Image string  `json:"image"`
+    Price float64 `json:"price"`
+}
 
-
-### Cohesion
-// TODO fix format
-
-// TODO provide a better example, just like the iPhone example above
-
-Cohesion refers to how closely the operations inside a single module (like a class or function) relate to each other. High cohesion means a class does one well-defined thing. Low cohesion means it handles unrelated tasks, making code harder to maintain and understand.
-
-<img src="cohesion.png" width="750" alt="Cohesion"/>
-
-
-<tabs>
-    <tab title="Low cohesion example">
-<code-block lang="python">
-class Utils:
-    def send_email(self, message):
-        print(f"Sending email: {message}")
-
-    def calculate_salary(self, hours, rate):
-        return hours * rate
-
-    def save_to_file(self, filename, content):
-        with open(filename, 'w') as f:
-            f.write(content)
+type AdminProductResponse struct {
+    Name string  `json:"name"`
+    Image string  `json:"image"`
+    Price float64 `json:"price"`
+    // Add admin-specific fields later as requirements change
+}
 </code-block>
-    </tab>
-</tabs>
-
-In this example, the `Utils` class does unrelated things: sending emails, calculating salary, and file operations. This is **low cohesion**—there’s no clear responsibility or purpose to the class.
-
-<tabs>
-    <tab title="High cohesion example">
-<code-block lang="python">
-class SalaryCalculator:
-    def calculate_salary(self, hours, rate):
-        return hours * rate
-
-class EmailService:
-    def send_email(self, message):
-        print(f"Sending email: {message}")
-
-class FileSaver:
-    def save_to_file(self, filename, content):
-        with open(filename, 'w') as f:
-            f.write(content)
-</code-block>
-    </tab>
-</tabs>
-
-Here, each class takes responsibility for one thing. `SalaryCalculator` focuses only on salary calculations, `EmailService` on emails, and `FileSaver` on file storage. This is **high cohesion**.
-
-**In summary:**  
-- *Low Cohesion* = a class/function does many unrelated things (hard to maintain & understand)
-- *High Cohesion* = a class/function does one well-defined thing (clear, robust, maintainable)
-
-Striving for high cohesion leads to code and products that are easier to reuse, refactor, and reason about.
 
 <note>
-// TODO fill content
-
-Coupling and Cohesion isn't just about structure, it is everywhere, represent the relationship of modules, component, class, or even lines of code..
+Just because two pieces of code look identical now doesn't mean they should be shared—especially if they're meant 
+for different purposes or consumers. Reusing code in these situations can lead to unnecessary coupling and future
+headaches as requirements diverge. Sometimes, it's better to keep similar code separate to keep your solutions
+flexible and maintainable.
 </note>
+
+By anticipating that these APIs will evolve separately, you avoid tight coupling from the start. Later, when the
+admin API needs extra fields like **supplier** or **inventory count**, you add them only to `AdminProductResponse`:
+
+<code-block lang="go">
+type AdminProductResponse struct {
+    Name           string  `json:"name"`
+    Image          string  `json:"image"`
+    Price          float64 `json:"price"`
+    Supplier       string  `json:"supplier"`
+    InventoryCount int     `json:"inventory_count"`
+}
+</code-block>
+
+This way, changes on the admin side never spill over and affect the user API. Each endpoint always gets exactly what it
+needs, and nothing more.
+
+<note>
+Tight coupling—such as shoehorning multiple consumers into a shared DTO—makes your code brittle:
+every change increases the risk of unintended side effects and extra testing.  
+Loose coupling—separating outward-facing data models for different use cases—lets features 
+and requirements evolve independently and safely. Even if it seems less DRY, 
+this is almost always the more maintainable and robust approach in the long term.
+</note>
+
+### Cohesion
+
+**Cohesion** refers to how closely the operations inside a single module (like a class or function) relate to each
+other.
+High cohesion means a module does one well-defined thing. Low cohesion means it handles unrelated tasks,
+making code harder to maintain and understand.
+
+Unlike **coupling**, cohesion is all about how tightly related the elements
+within a single module (such as a class, function, or feature) are. The higher the cohesion among its components,
+the better—the module’s elements should work together to achieve one clear, focused purpose.
+
+<img src="cohesion.png" width="700" alt="Cohesion"/>
+
+Think of a **waste sorting system** with **Recycling** bins (for items like plastic bottles and cans) and **Compost**
+bins (for things like food scraps). Each bin is designed to handle one specific type of waste, which makes sorting and
+processing much easier. This is **high cohesion**, which is **good** because everything in the bin belongs together.
+
+<note>
+With <b>cohesion</b>, <b>higher is better</b>: the more closely related a module's responsibilities are, 
+the more focused and maintainable it becomes. <b>High cohesion</b> means each part works together for one clear purpose.  
+In contrast, with <b>coupling</b>, <b>lower is better</b>: loosely coupled components interact minimally, 
+making code more flexible and easier to change.  
+Aim for high cohesion within modules and loose coupling between them for the most robust design.
+</note>
+
+<img src="waste-sorting-system.png" width="700" alt="Waste sorting system"/>
+
+If someone throws a plastic bottle into the compost bin, problems start to appear. The compost bin now contains
+unrelated
+items—this is low cohesion. Worse, the composting process is forced to “deal with” plastic, something it was never
+designed for. The bins become coupled in a bad way, since what should be a clean separation now creates confusion and
+extra work.
+
+<img src="waste-sorting-system-wrong.png" width="700" alt="Waste sorting system wrong"/>
+
+Just like in code, mixing unrelated things together (low cohesion) or forcing unrelated systems to depend on each other
+(tight coupling) leads to a mess that’s hard to fix. Clean separation keeps everything easier to manage and understand.
+
+#### Example: Low vs. High Cohesion in Code
+
+Let's look at a simple example to highlight the difference between low and high cohesion.
+
+**Low Cohesion Example (One class does too much):**
+
+Suppose you have a `DocumentManager` class that handles unrelated responsibilities:
+
+<code-block lang="go">
+type DocumentManager struct{}
+
+func (d *DocumentManager) SaveToDisk(doc string) error {
+    // Logic to save document to disk
+    return nil
+}
+
+func (d *DocumentManager) ParseMarkdown(doc string) string {
+    // Logic to parse Markdown from doc
+    return ""
+}
+
+func (d *DocumentManager) SendOverNetwork(doc string) error {
+    // Logic to send document over the network
+    return nil
+}
+</code-block>
+
+This class mixes together file I/O, document parsing, and networking. If you need to change how documents are sent, you
+risk breaking save or parsing logic, and it's hard to test or maintain each responsibility separately.
+
+---
+
+**High Cohesion Example (Each class or function does one clear thing):**
+
+Instead, split responsibilities by purpose:
+
+<code-block lang="go">
+type DocumentParser struct{}
+
+func (p *DocumentParser) ParseMarkdown(doc string) string {
+    // Parse Markdown content
+    return ""
+}
+
+type DocumentSaver struct{}
+
+func (s *DocumentSaver) SaveToDisk(doc string) error {
+    // Save document to disk
+    return nil
+}
+
+type DocumentSender struct{}
+
+func (s *DocumentSender) SendOverNetwork(doc string) error {
+    // Send document over the network
+    return nil
+}
+</code-block>
+
+Now each type focuses on a single task (high cohesion). If requirements or implementations change for one aspect, you
+don't risk unrelated parts—the code is easier to understand, test, and extend.
+
+## From SOLID to Coupling & Cohesion
+
+~~**Let’s be honest: SOLID is entirely interview-driven.**~~
 
 ## Common Violations
 
@@ -214,10 +294,15 @@ Coupling and Cohesion isn't just about structure, it is everywhere, represent th
 
 ### The "MVC Starter" problem (A guide to "Clean Architecture")
 
-### The DRY problem
-
 ### The "Everything is a Service" problem
 
 ## Conclusion
+
+<note>
+// TODO fill content
+
+Coupling and Cohesion isn't just about structure, it is everywhere, represent the relationship of modules, component,
+class, or even lines of code..
+</note>
 
 ## Reference

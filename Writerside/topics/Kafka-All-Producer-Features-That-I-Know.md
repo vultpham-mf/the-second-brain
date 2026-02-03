@@ -91,6 +91,16 @@ https://kafka.apache.org/41/configuration/producer-configs/#producerconfigs_batc
 
 https://kafka.apache.org/41/configuration/producer-configs/#producerconfigs_linger.ms
 
+Each Kafka topic contains one or more partitions. When a Kafka producer sends a record to a topic, it needs to decide which partition to send it to. If we send several records to the same partition at around the same time, they can be sent as a batch. Processing each batch requires a bit of overhead, with each of the records inside the batch contributing to that cost. Records in smaller batches have a higher effective cost per record. Generally, smaller batches lead to more requests and queuing, resulting in higher latency.
+
+A batch is completed either when it reaches a certain size (batch.size) or after a period of time (linger.ms) is up. Both batch.size and linger.ms are configured in the producer. The default for batch.size is 16,384 bytes, and the default of linger.ms is 0 milliseconds. Once batch.size is reached or at least linger.ms time has passed, the system will send the batch as soon as it is able.
+
+At first glance, it might seem like setting linger.ms to 0 would only lead to the production of single-record batches. However, this is usually not the case. Even when linger.ms is 0, the producer will group records into batches when they are produced to the same partition around the same time. This is because the system needs a bit of time to handle each request, and batches form when the system cannot attend to them all right away.
+
+Part of what determines how batches form is the partitioning strategy; if records are not sent to the same partition, they cannot form a batch together. Fortunately, Kafka allows users to select a partitioning strategy by configuring a Partitioner class. The Partitioner assigns the partition for each record. The default behavior is to hash the key of a record to get the partition, but some records may have a key that is null. In this case, the old partitioning strategy before Apache Kafka 2.4 would be to cycle through the topic’s partitions and send a record to each one. Unfortunately, this method does not batch very well and may in fact add latency.
+
+Due to the potential for increased latency with small batches, the original strategy for partitioning records with null keys can be inefficient. This changes with Apache Kafka version 2.4, which introduces sticky partitioning, a new strategy for assigning records to partitions with proven lower latency.
+
 ## End-to-end batch compression
 
 ## Retry 

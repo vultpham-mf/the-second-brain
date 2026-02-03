@@ -1,6 +1,6 @@
 ﻿# It’s Just Coupling and Cohesion
 
-<primary-label ref="opinion"></primary-label>
+<primary-label ref="draft"></primary-label>
 
 ## Preface
 
@@ -173,8 +173,10 @@ type AdminProductResponse struct {
 }
 </code-block>
 
-This way, changes on the admin side never spill over and affect the user API. Each endpoint always gets exactly what it
-needs, and nothing more.
+By keeping these response objects separate, changes made for admin requirements never unintentionally impact the user API.
+Each endpoint consistently delivers only what its consumer actually needs—nothing extra, nothing missing. This clear 
+separation not only prevents cross-impact, but also demonstrates the first two **SOLID** principles in action: 
+**Single Responsibility** and **Open/Closed**.
 
 <note>
 Tight coupling—such as shoehorning multiple consumers into a shared DTO—makes your code brittle:
@@ -224,75 +226,23 @@ Just like in code, mixing unrelated things together (low cohesion) or forcing un
 
 #### Example: Low vs. High Cohesion in Code
 
-Let's look at a simple example to highlight the difference between low and high cohesion.
+Returning to the **waste sorting system** analogy, a common mistake with cohesion is grouping elements by their "type" 
+instead of their actual purpose. For example, we don't put a bottle in the **Recycling** bin just because it's made of
+plastic—we put it there because it's **recyclable**. 
 
-**Low Cohesion Example (One class does too much):**
+The important lesson for cohesion is to group things by **what they are meant to accomplish**, not just by their superficial
+traits. The same rule applies in software: achieve high cohesion by organizing modules, components or functions around their true
+responsibilities, not simply by technical type or category. Here’s a code example to show what that means:
 
-Suppose you have a `DocumentManager` class that handles unrelated responsibilities:
-
-<code-block lang="go">
-type DocumentManager struct{}
-
-func (d *DocumentManager) SaveToDisk(doc string) error {
-    // Logic to save document to disk
-    return nil
-}
-
-func (d *DocumentManager) ParseMarkdown(doc string) string {
-    // Logic to parse Markdown from doc
-    return ""
-}
-
-func (d *DocumentManager) SendOverNetwork(doc string) error {
-    // Logic to send document over the network
-    return nil
-}
-</code-block>
-
-This class mixes together file I/O, document parsing, and networking. If you need to change how documents are sent, you
-risk breaking save or parsing logic, and it's hard to test or maintain each responsibility separately.
-
----
-
-**High Cohesion Example (Each class or function does one clear thing):**
-
-Instead, split responsibilities by purpose:
-
-<code-block lang="go">
-type DocumentParser struct{}
-
-func (p *DocumentParser) ParseMarkdown(doc string) string {
-    // Parse Markdown content
-    return ""
-}
-
-type DocumentSaver struct{}
-
-func (s *DocumentSaver) SaveToDisk(doc string) error {
-    // Save document to disk
-    return nil
-}
-
-type DocumentSender struct{}
-
-func (s *DocumentSender) SendOverNetwork(doc string) error {
-    // Send document over the network
-    return nil
-}
-</code-block>
-
-Now each type focuses on a single task (high cohesion). If requirements or implementations change for one aspect, you
-don't risk unrelated parts—the code is easier to understand, test, and extend.
-
-## From SOLID to Coupling & Cohesion
-
-~~**Let’s be honest: SOLID is entirely interview-driven.**~~
+// TODO example
 
 ## Common Violations
+// TODO I'll try to complete this section later
 
 ### The "Class and Interface" problem
 
 ### The "MVC Starter" problem (A guide to "Clean Architecture")
+~~I hate to mention "Clean Architecture" as a actual arch, but anyway~~
 
 ### The "Everything is a Service" problem
 
@@ -306,3 +256,4 @@ class, or even lines of code..
 </note>
 
 ## Reference
+// TODO add reference

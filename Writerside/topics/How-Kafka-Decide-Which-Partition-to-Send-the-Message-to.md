@@ -53,3 +53,33 @@ When you provide a Key with your message, Kafka uses a partitioner to map that k
 This ensures that all messages with the same key always land in the same partition, preserving semantic ordering.
 
 ## Random
+
+
+[//]: # (Partition.Any actully based on // Partitioner = config, just like how we produce message without specifying partition)
+
+[//]: # (public enum Partitioner)
+
+[//]: # ({)
+
+[//]: # (/// <summary>Random</summary>)
+
+[//]: # (Random,)
+
+[//]: # (/// <summary>Consistent</summary>)
+
+[//]: # (Consistent,)
+
+[//]: # (/// <summary>ConsistentRandom</summary>)
+
+[//]: # (ConsistentRandom,)
+
+[//]: # (/// <summary>Murmur2</summary>)
+
+[//]: # (Murmur2,)
+
+[//]: # (/// <summary>Murmur2Random</summary>)
+
+[//]: # (Murmur2Random,)
+
+[//]: # (})
+

@@ -226,7 +226,7 @@ Just like in code, mixing unrelated things together (low cohesion) or forcing un
 
 #### Example: Low vs. High Cohesion in Code
 
-Returning to the **waste sorting system** analogy, a common mistake with cohesion is grouping elements by their "type" 
+Referring back to the **waste sorting system** analogy, a common mistake with cohesion is grouping elements by their "type" 
 instead of their actual purpose. For example, we don't put a bottle in the **Recycling** bin just because it's made of
 plastic—we put it there because it's **recyclable**. 
 

@@ -12,6 +12,7 @@
     </toc-element>
     <toc-element toc-title="Draft">
         <toc-element topic="It’s-Just-Coupling-and-Cohesion.md"/>
+        <toc-element topic="Batching-in-Kafka.md"/>
         <toc-element topic="Kafka-All-Producer-Features-That-I-Know.md"/>
         <toc-element topic="How-Kafka-Decide-Which-Partition-to-Send-the-Message-to.md"/>
         <toc-element topic="Authentication.md"/>

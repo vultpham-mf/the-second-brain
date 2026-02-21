@@ -1,7 +1,7 @@
 # Set up Kafka with Dependency Injection in .NET
 <primary-label ref="guide"/>
-<secondary-label ref="dotnet"/>
 <secondary-label ref="kafka"/>
+<secondary-label ref="dotnet"/>
 
 <img src="kafka-brainless-meme.jpg" alt="Wow, my project must use Kafka and Microservices"/>
 

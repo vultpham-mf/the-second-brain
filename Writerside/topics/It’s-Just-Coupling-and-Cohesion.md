@@ -117,8 +117,8 @@ Later, you receive a requirement to build an API for the **admin product page**.
 the product's name, image, and price, so you reuse the existing `ProductDTO` to avoid duplication (following the DRY
 principle).
 
-However, the problem comes when one of those pages needs to change. Suppose the admin page now needs two new fields: *
-*supplier** and **inventory count**. You update `ProductDTO` to satisfy the admin requirement:
+However, the problem comes when one of those pages needs to change. Suppose the admin page now needs two new fields: 
+**supplier** and **inventory count**. You update `ProductDTO` to satisfy the admin requirement:
 
 <code-block lang="go">
 type ProductDTO struct {
